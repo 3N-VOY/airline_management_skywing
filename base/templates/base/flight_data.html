@@ -1,40 +1,32 @@
-<form action="{% url 'edit_flight' flight.pk %}" method="post">
-  {% csrf_token %}
-  <!-- Render each form field manually -->
+{% block content %}
 
-  <div class="form-group">
-    <label for="id_flight_number">Flight Number:</label>
-    {{ form.flight_number }}
-  </div>
-  <div class="form-group">
-    <label for="id_origin">Origin:</label>
-    {{ form.origin }}
-  </div>
-  <div class="form-group">
-    <label for="id_destination">Destination:</label>
-    {{ form.destination }}
-  </div>
-  <div class="form-group">
-    <label for="id_airplane">Airplane:</label>
-    {{ form.airplane }}
-  </div>
-  <div class="form-group">
-    <label for="id_departure_time">Departure Time:</label>
-    {{ form.departure_time }}
-  </div>
-  <div class="form-group">
-    <label for="id_arrival_time">Arrival Time:</label>
-    {{ form.arrival_time }}
-  </div>
-  <div class="form-group">
-    <label for="id_date">Date:</label>
-    {{ form.date }}
-  </div>
-  <div class="form-group">
-    <label for="id_staff">Staff:</label>
-    {{ form.staff }}
-  </div>
+<div>
+  <h2>Flight Detail</h2>
+  <div>
+    <!-- Add other flight details here -->
+    <div>
+      <div>
+        <p><strong>Flight Number:</strong> {{ flight_detail.flight_number }}</p>
+        <p><strong>Origin:</strong> {{ flight_detail.origin.city_name }}</p>
+        <p>
+          <strong>Destination:</strong> {{ flight_detail.destination.city_name}}
+        </p>
 
-  <button type="submit">Submit</button>
-</form>
-<script></script>
+        <p><strong>Flight Date:</strong>{{flight_detail.date}}</p>
+        <p><strong>Arrival Time:</strong>{{flight_detail.departure_time}}</p>
+        <p><strong>Departure time:</strong>{{flight_detail.departure_time}}</p>
+        <p><strong>Airplane Model:</strong>{{flight_detail.airplane.model}}</p>
+        <p>
+          <strong>Airplane Serial Number:</strong
+          >{{flight_detail.airplane.serial_number}}
+        </p>
+        <p><strong>Pliot 1:</strong>aex</p>
+        <p><strong>Pilot 2</strong>Fck</p>
+      </div>
+
+      <!-- Add other flight details here -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}

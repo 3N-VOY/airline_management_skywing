@@ -15,9 +15,9 @@ def flight_list(request):
 
 #retrieve flight data for edit in modal
 def flight_data(request, pk):
-    flight_data = get_object_or_404(Flight, pk=pk)
-    context = {'flight_data': flight_data}
-    return render(request, 'base/flight_data.html', context)
+    flight_detail = get_object_or_404(Flight, pk=pk)
+    context = {'flight_detail': flight_detail}
+    return render(request, 'base/flight_form.html', context)
 
 #flight form
 def flight_form(request, pk):
@@ -26,7 +26,7 @@ def flight_form(request, pk):
     if request.method == 'GET':
         form = SaveFlights(instance=flight_detail)
         context = {'form': form, 'pk': pk}
-        return render(request, 'base/flight_data.html', context)
+        return render(request, 'base/flight_form.html', context)
         
     elif request.method == 'POST':
         form = SaveFlights(request.POST, instance=flight_detail)
@@ -45,4 +45,4 @@ def flight_form(request, pk):
                 print(form.errors)
                 # Handle form errors
                 context = {'form': form, 'pk': pk}
-                return render(request, 'base/flight_data.html', context)
+                return render(request, 'base/flight_form.html', context)

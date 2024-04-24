@@ -133,12 +133,12 @@
   </div>
 </section>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script>
   $(document).ready(function () {
-    console.log(flightUrl)
+    var flightUrl;
     $(".view-data").click(function () {
-      var flightUrl = $(this).data("url");
+      flightUrl = $(this).data("url");
       $.ajax({
         url: flightUrl,
         type: "GET",
@@ -152,7 +152,7 @@
     });
 
     $(".edit-data").click(function () {
-      var flightUrl = $(this).data("url");
+      var flightUrl = $(this).data("url"); // use the flightUrl variable defined in the view-data button's click function
       $.ajax({
         url: flightUrl,
         type: "GET",
@@ -164,8 +164,6 @@
         },
       });
     });
-
-
   });
 </script>
 

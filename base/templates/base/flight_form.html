@@ -1,0 +1,40 @@
+<form action="{% url 'edit_flight' pk %}" method="post">
+  {% csrf_token %}
+  <!-- Render each form field manually -->
+
+  <div class="form-group">
+    <label for="id_flight_number">Flight Number:</label>
+    {{ form.flight_number }}
+  </div>
+  <div class="form-group">
+    <label for="id_origin">Origin:</label>
+    {{ form.origin }}
+  </div>
+  <div class="form-group">
+    <label for="id_destination">Destination:</label>
+    {{ form.destination }}
+  </div>
+  <div class="form-group">
+    <label for="id_airplane">Airplane:</label>
+    {{ form.airplane }}
+  </div>
+  <div class="form-group">
+    <label for="id_departure_time">Departure Time:</label>
+    {{ form.departure_time }}
+  </div>
+  <div class="form-group">
+    <label for="id_arrival_time">Arrival Time:</label>
+    {{ form.arrival_time }}
+  </div>
+  <div class="form-group">
+    <label for="id_date">Date:</label>
+    {{ form.date }}
+  </div>
+  <div class="form-group">
+    <label for="id_staff">Staff:</label>
+    {{ form.staff }}
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+<script></script>
