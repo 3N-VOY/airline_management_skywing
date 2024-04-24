@@ -1,0 +1,172 @@
+{% extends 'base/base.html' %} {% block content %}
+<section class="py-4">
+  <div class="container">
+    <h3 class="fw-bolder text-center">List of Flights</h3>
+    <center>
+      <hr class="bg-primary opacity-100" style="height: 3px" width="5%" />
+    </center>
+    <div class="card rounded-0 shadow">
+      <div class="card-body">
+        <div class="container-fluid">
+          <div class="text-end mb-3">
+            <button
+              class="btn btn-sm btn-primary rounded-0 bg-gradient-primary"
+              type="button"
+              id="create_new"
+            >
+              <i class="fa fa-plus"></i> Add New
+            </button>
+          </div>
+          <table class="table table-bordered table-striped" id="flight-tbl">
+            <colgroup>
+              <col width="5%" />
+              <col width="20%" />
+              <col width="20%" />
+              <col width="40%" />
+              <col width="15%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Flight</th>
+                <th class="text-center">Airline</th>
+                <th class="text-center">Details</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for flight in flights %}
+              <tr>
+                <td class="text-center">{{ forloop.counter }}</td>
+                <td>{{ flight.flight_number }}</td>
+                <td>{{ flight.airline.name }}</td>
+                <td>
+                  <div class="lh-1">
+                    <small
+                      ><b>Departure:</b> {{ flight.departure_time }},
+                      {{flight.origin.city_name }}</small
+                    ><br />
+                    <small
+                      ><b>Arrival:</b> {{ flight.arrival_time}},
+                      {{flight.destination.city_name }}</small
+                    >
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="abtn{{ flight.pk }}"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Action
+                    </button>
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="abtn{{ flight.pk }}"
+                    >
+                      <a
+                        class="dropdown-item view-data"
+                        href="#"
+                        data-url="{% url 'flight_data' flight.pk %}"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        >View</a
+                      >
+                      <a
+                        class="dropdown-item edit-data"
+                        href="#"
+                        data-url="{% url 'edit_flight' flight.pk %}"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        >Edit</a
+                      >
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Flight Details</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Flight details will be populated here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    console.log(flightUrl)
+    $(".view-data").click(function () {
+      var flightUrl = $(this).data("url");
+      $.ajax({
+        url: flightUrl,
+        type: "GET",
+        success: function (response) {
+          $(".modal-body").html(response);
+        },
+        error: function (xhr, errmsg, err) {
+          console.log(xhr.status + ": " + xhr.responseText);
+        },
+      });
+    });
+
+    $(".edit-data").click(function () {
+      var flightUrl = $(this).data("url");
+      $.ajax({
+        url: flightUrl,
+        type: "GET",
+        success: function (response) {
+          $(".modal-body").html(response);
+        },
+        error: function (xhr, errmsg, err) {
+          console.log(xhr.status + ": " + xhr.responseText);
+        },
+      });
+    });
+
+
+  });
+</script>
+
+{% endblock %}
