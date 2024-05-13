@@ -12,11 +12,11 @@ class Airplane(models.Model):
         return f"{self.manufacturer} {self.model}"
     
 class City(models.Model):
-    name = models.CharField(max_length=100)
+    city_name = models.CharField(max_length=100)
     code = models.CharField(max_length=10)
     
     def __str__(self):
-        return self.name
+        return self.city_name
 
 class Flight(models.Model):
     flight_number = models.CharField(max_length=20)

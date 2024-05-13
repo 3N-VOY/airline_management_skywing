@@ -1,0 +1,23 @@
+<form action="{% url 'reservation_edit' pk %}" method="post">
+  {% csrf_token %}
+  <!-- Render each form field manually -->
+
+  <div class="form-group">
+    <label for="id_flight_number">Flight Number:</label>
+    {{ form.flight }}
+  </div>
+  <div class="form-group">
+    <label for="id_origin">passenger:</label>
+    {{ form.passenger }}
+  </div>
+  <div class="form-group">
+    <label for="id_destination">seat_number:</label>
+    {{ form.seat_number }}
+  </div>
+  <div class="form-group">
+    <label for="id_airplane">class_type:</label>
+    {{ form.class_type }}
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,30 @@
+{% block content %}
+
+<div>
+  <h2>Staff Details</h2>
+  <div>
+    <div>
+      <div>
+        <p>
+        <p><strong>Employee Number:</strong> {{staff_detail.employee_number}}</p>
+          <strong>Email:</strong>
+          {{staff_detail.email}}
+        </p>
+        <p>
+          <strong>First Name:</strong>{{staff_detail.first_name}}</p>
+        <p><strong>Last Name:</strong> {{staff_detail.last_name}}</p>
+
+        <p><strong>Phone:</strong> {{staff_detail.phone}}</p>
+        <p><strong>Address:</strong> {{staff_detail.address}}</p>
+
+        <p><strong>Salary: </strong>{{staff_detail.salary}}</p>
+        <p><strong>Department: </strong>{{staff_detail.department}}</p>
+        <p><strong>Occupation: </strong>{{staff_detail.role}}</p>
+        <p><strong>Date Joined: </strong>{{staff_detail.date_joined}}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

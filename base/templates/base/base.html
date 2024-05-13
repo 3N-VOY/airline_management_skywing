@@ -26,7 +26,7 @@
           <i class="bx bx-menu" id="header-toggle"></i>
         </div>
         <div class="header_img">
-          <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
+          
         </div>
       </header>
 
@@ -34,12 +34,12 @@
         <div class="l-navbar" id="nav-bar">
           <nav class="nav">
             <div>
-              <a href="#" class="nav_logo">
-                <i class="bx bx-layer nav_logo-icon"></i>
+              <a href="{% url 'dashboard' %}" class="nav_logo">
+                
                 <span class="nav_logo-name">SkyWing Airlines</span>
               </a>
               <div class="nav_list">
-                <a href="#" class="nav_link active">
+                <a href="{% url 'dashboard' %}" class="nav_link active">
                   <i class="bx bx-grid-alt nav_icon"></i>
                   <span class="nav_name">Dashboard</span>
                 </a>
@@ -47,17 +47,17 @@
                   <i class="bx bx-message-square-detail nav_icon"></i>
                   <span class="nav_name">View Flights</span>
                 </a>
-                <a href="#" class="nav_link">
+                <a href="{% url 'manage_passengers' %}" class="nav_link">
                   <i class="bx bx-user nav_icon"></i>
                   <span class="nav_name">View Passengers</span>
                 </a>
-                <a href=#" class="nav_link">
+                <a href="{% url 'manage_reservations' %}" class="nav_link">
                   <i class="bx bx-bookmark nav_icon"></i>
-                  <span class="nav_name">View Staff</span>
+                  <span class="nav_name">View Reservations</span>
                 </a>
-                <a href="#" class="nav_link">
+                <a href="{% url 'manage_staff' %}" class="nav_link">
                   <i class="bx bx-folder nav_icon"></i>
-                  <span class="nav_name">Files</span>
+                  <span class="nav_name">Manage Staff</span>
                 </a>
                 <a href="#" class="nav_link">
                   <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
@@ -72,7 +72,63 @@
           </nav>
         </div>
       </div>
-    <div>{% block content %} {% endblock %}</div>
+      <div>{% block content %} {% endblock %}</div>
+      {% block dashboard %}
+      {% if request.path == '/' %}
+      <section class="">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 card card-default rounded-0 shadow border border-gray">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="d-flex w-100 align-items-center">
+                            <div class="col-3">
+                                <i class="fs-1 text-primary fa fa-th-list"></i>
+                            </div>
+                            <div class="col-9">
+                                <h1 class="text-center">{{reservations_count}}</h2>
+                                    <h3 class="text-center"><b>Total Reservations</b></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 card card-default rounded-0 shadow border border-gray">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="d-flex w-100 align-items-center">
+                            <div class="col-3">
+                                <i class="fs-1 text-dark fa fa-map-marker"></i>
+                            </div>
+                            <div class="col-9">
+                                <h1 class="text-center">{{flights_count}}</h2>
+                                    <h3 class="text-center"><b>Total Flights</b></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 card card-default rounded-0 shadow border border-gray">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="d-flex w-100 align-items-center">
+                            <div class="col-3">
+                                <i class="fs-1 text-success fa fa-calendar-week"></i>
+                            </div>
+                            <div class="col-9">
+                                <h1 class="text-center">{{passengers_count}}</h2>
+                                    <h3 class="text-center"><b>Total Passengers</b></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    {% endblock %}
+
+
+  
     <footer>
       <!-- Add footer content here -->
     </footer>

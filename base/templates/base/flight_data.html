@@ -12,16 +12,36 @@
           <strong>Destination:</strong> {{ flight_detail.destination.city_name}}
         </p>
 
-        <p><strong>Flight Date:</strong>{{flight_detail.date}}</p>
-        <p><strong>Arrival Time:</strong>{{flight_detail.departure_time}}</p>
-        <p><strong>Departure time:</strong>{{flight_detail.departure_time}}</p>
-        <p><strong>Airplane Model:</strong>{{flight_detail.airplane.model}}</p>
+        <p><strong>Flight Date: </strong>{{flight_detail.date}}</p>
+        <p><strong>Arrival Time: </strong>{{flight_detail.arrival_time}}</p>
+        <p><strong>Departure time: </strong>{{flight_detail.departure_time}}</p>
+        <p><strong>Airplane Model: </strong>{{flight_detail.airplane.model}}</p>
         <p>
           <strong>Airplane Serial Number:</strong
           >{{flight_detail.airplane.serial_number}}
         </p>
-        <p><strong>Pliot 1:</strong>aex</p>
-        <p><strong>Pilot 2</strong>Fck</p>
+        <div>
+
+          <p><strong>Captain:</strong> {{ captain.staff.first_name }} {{ captain.staff.last_name }}</p>
+          <p><strong>Copilot:</strong> {{ copilot.staff.first_name }} {{ copilot.staff.last_name }}</p>
+  
+
+        
+      </div>
+        <p><strong>Flight Attendants:</strong></p>
+        <ul>
+         
+            {% for staff_member in flight_attendants %}
+                <li>{{ staff_member.first_name }}, {{ staff_member.last_name }}</li>
+            {% endfor %}
+
+
+            <p><strong>Maintenance Crew:</strong></p>
+            <ul>
+             
+                {% for crew_member in maintenance_crew %}
+                    <li>{{ crew_member.first_name }}, {{ crew_member.last_name }}</li>
+                {% endfor %}
       </div>
 
       <!-- Add other flight details here -->

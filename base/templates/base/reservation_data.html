@@ -1,0 +1,45 @@
+{% block content %}
+
+<div>
+  <h2>Flight Detail</h2>
+  <div>
+    <!-- Add other flight details here -->
+    <div>
+      <div>
+        <p>
+          <strong>Flight Number:</strong> 
+          {{reservation_detail.flight.flight_number}}
+        </p>
+        <p>
+          <strong>First Name:</strong>
+          {{reservation_detail.passenger.first_name}}
+        </p>
+        <p>
+          <strong>Last Name:</strong> {{reservation_detail.passenger.last_name}}
+        </p>
+        <p><strong>Email:</strong> {{ reservation_detail.passenger.email}}</p>
+
+        <p><strong>Seat Number: </strong>{{reservation_detail.seat_number}}</p>
+        <p><strong>Class Type: </strong>{{reservation_detail.class_type}}</p>
+        <p>
+          <strong>Departure time: </strong
+          >{{reservation_detail.flight.departure_time}}
+        </p>
+        <p>
+          <strong>Arrival time: </strong
+          >{{reservation_detail.flight.arrival_time}}
+        </p>
+        <p>
+          <strong>Airplane Model: </strong
+          >{{reservation_detail.flight.airplane.model}}
+        </p>
+        <p>
+          <strong>Airplane Serial Number:</strong
+          >{{reservation_detail.flight.airplane.serial_number}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

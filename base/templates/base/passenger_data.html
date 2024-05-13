@@ -1,0 +1,26 @@
+{% block content %}
+
+<div>
+  <h2>Passenger Details</h2>
+  <div>
+    <div>
+      <div>
+        <p>
+          <strong>Email:</strong>
+          {{passenger_detail.email}}
+        </p>
+        <p>
+          <strong>First Name:</strong>
+          {{passenger_detail.first_name}}
+        </p>
+        <p><strong>Last Name:</strong> {{passenger_detail.last_name}}</p>
+        <p><strong>Phone:</strong> {{passenger_detail.phone}}</p>
+        <p><strong>Address:</strong> {{passenger_detail.address}}</p>
+
+        <p><strong>Date Joined: </strong>{{passenger_detail.date_joined}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

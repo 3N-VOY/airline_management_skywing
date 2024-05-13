@@ -1,7 +1,6 @@
-<form action="{% url 'edit_flight' pk %}" method="post">
+<!-- Your HTML form for adding a new flight -->
+<form method="post" action="{% url 'add_flight2' %}">
   {% csrf_token %}
-  <!-- Render each form field manually -->
-
   <div class="form-group">
     <label for="id_flight_number">Flight Number:</label>
     {{ form.flight_number }}
@@ -20,15 +19,15 @@
   </div>
   <div class="form-group">
     <label for="id_departure_time">Departure Time:</label>
-    {{ form.departure_time }}
+    <input type="datetime-local" id="id_departure_time" name="departure_time" />
   </div>
   <div class="form-group">
     <label for="id_arrival_time">Arrival Time:</label>
-    {{ form.arrival_time }}
+    <input type="datetime-local" id="id_arrival_time" name="arrival_time" />
   </div>
   <div class="form-group">
     <label for="id_date">Date:</label>
-    {{ form.date }}
+    <input type="date" id="id_date" name="date" />
   </div>
   <div class="form-group">
     <label for="id_captain">Captain:</label>
@@ -38,16 +37,13 @@
     <label for="id_copilot">Co-Pilot:</label>
     {{ form.copilot }}
   </div>
-
   <div class="form-group">
-    <label for="flight_attendants_dropdown">Flight Attendants:</label>
+    <label for="id_flight_attendants">Flight Attendants:</label>
     {{ form.flight_attendants }}
   </div>
-
   <div class="form-group">
     <label for="id_maintenance_crew">Maintenance Crew:</label>
     {{ form.maintenance_crew }}
   </div>
-
-  <button type="submit">Submit</button>
+  <button type="submit">Add Flight</button>
 </form>
