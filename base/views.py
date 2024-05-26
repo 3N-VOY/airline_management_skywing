@@ -30,9 +30,13 @@ def dashboard(request):
 
 #retrieve flights
 def flight_list(request):
+    #retrieve all flights
     flights = Flight.objects.all()
+    #pass the flights to the context
     context = {'flights': flights}
+    #render the flight_management.html template with the context
     return render(request, 'base/flight_management.html', context)
+
 
 #retrieve flight data for edit in modal
 def flight_data(request, pk):
